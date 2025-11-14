@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Natie's Events - Premier event planning services in Zimbabwe. Weddings, corporate events, birthday parties, and more.">
+    <meta name="keywords" content="event planning, weddings, corporate events, birthday parties, Zimbabwe">
+    <meta property="og:title" content="Natie's Events - Your Premier Event Planning Partner in Zimbabwe">
+    <meta property="og:description" content="Create unforgettable moments with professional event planning services across Zimbabwe.">
+    <meta property="og:type" content="website">
+    <title>Natie's Events - Your Premier Event Planning Partner in Zimbabwe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header role="banner">
+        <div class="container">
+            <nav class="navbar" aria-label="Main navigation">
+                <a href="index.html" class="logo" aria-label="Natie's Events home">
+                    <div class="logo-icon">
+                        <i class="fas fa-glass-cheers" aria-hidden="true"></i>
+                    </div>
+                    <div class="logo-text">Natie's Events</div>
+                </a>
+                
+                <div class="nav-links" id="nav-links">
+                    <a href="index.html" class="active" aria-current="page">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="services.html">Services</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                
+                <a href="booking.html" class="cta-button" aria-label="Book an event now">
+                    <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                    Book Now
+                </a>
+                
+                <button class="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="nav-links">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" aria-labelledby="hero-title">
+        <div class="container">
+            <div class="hero-content">
+                <h1 id="hero-title">Create Unforgettable Moments with Natie's Events</h1>
+                <p>Your premier event planning partner in Zimbabwe. From intimate gatherings to grand celebrations, we bring your vision to life with exceptional service and attention to detail.</p>
+                <div class="search-container">
+                    <label for="eventSearch" class="sr-only">Search events, services, or locations</label>
+                    <input type="text" class="search-input" id="eventSearch" placeholder="Search events, services, or locations..." aria-label="Search events">
+                    <button class="search-button" onclick="searchEvents()" aria-label="Submit search">
+                        <i class="fas fa-search" aria-hidden="true"></i> Search
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Events -->
+    <section class="section" aria-labelledby="featured-events-title">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="featured-events-title">Featured Events</h2>
+                <p>Discover our latest and most popular event packages designed to make your special occasions truly memorable.</p>
+            </div>
+            
+            <div class="events-grid" id="eventsContainer" role="region" aria-live="polite" aria-label="Featured events list">
+                <!-- Events will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section services" aria-labelledby="services-title">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="services-title">Our Services</h2>
+                <p>We offer comprehensive event planning services tailored to your unique needs and preferences.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-ring"></i>
+                    </div>
+                    <h3>Wedding Planning</h3>
+                    <p>Full-service wedding coordination from engagement to reception.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-birthday-cake"></i>
+                    </div>
+                    <h3>Birthday Parties</h3>
+                    <p>Memorable birthday celebrations for all ages and themes.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Corporate Events</h3>
+                    <p>Professional conferences, meetings, and corporate functions.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Catering Services</h3>
+                    <p>Delicious menus crafted by our expert culinary team.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section testimonials" aria-labelledby="testimonials-title">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="testimonials-title">What Our Clients Say</h2>
+                <p>Hear from couples and businesses who trusted us to make their events unforgettable.</p>
+            </div>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-content">Natie's Events transformed our wedding day into a dream come true. Every detail was perfect, and their team was incredibly professional and responsive.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">TS</div>
+                        <div class="author-info">
+                            <h4>Tariro S.</h4>
+                            <p>Bride, Harare</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-content">Our corporate anniversary celebration was a huge success thanks to Natie's Events. They handled everything seamlessly from start to finish.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MK</div>
+                        <div class="author-info">
+                            <h4>Morgan K.</h4>
+                            <p>CEO, Tech Solutions</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-content">The birthday party they organized for my daughter was absolutely magical! The kids had the time of their lives, and I didn't have to worry about a thing.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ND</div>
+                        <div class="author-info">
+                            <h4>Nomsa D.</h4>
+                            <p>Parent, Bulawayo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Natie's Events</h3>
+                    <p>Your trusted partner for exceptional event planning services across Zimbabwe. We create unforgettable experiences that exceed expectations.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="booking.html">Book Now</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="services.html#weddings">Wedding Planning</a></li>
+                        <li><a href="services.html#birthdays">Birthday Parties</a></li>
+                        <li><a href="services.html#corporate">Corporate Events</a></li>
+                        <li><a href="services.html#catering">Catering Services</a></li>
+                        <li><a href="services.html#decoration">Event Decoration</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Enterprise Road, Harare, Zimbabwe</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+263 78 560 0746</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@natiesevents.co.zw</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Mon-Fri: 9AM-6PM, Sat: 10AM-4PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Natie's Events. All rights reserved. | Designed and Developed in Zimbabwe</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

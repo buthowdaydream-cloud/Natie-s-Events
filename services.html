@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Natie's Events</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary: #8B5CF6;
+            --primary-dark: #7C3AED;
+            --primary-light: #A78BFA;
+            --secondary: #10B981;
+            --secondary-dark: #0D9668;
+            --accent: #F59E0B;
+            --dark: #1F2937;
+            --dark-light: #374151;
+            --light: #F9FAFB;
+            --gray: #6B7280;
+            --light-gray: #F3F4F6;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --gradient-light: linear-gradient(135deg, var(--primary-light), var(--secondary));
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            background: var(--gradient);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover .logo-icon {
+            transform: rotate(15deg);
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        .cta-button {
+            background: var(--gradient);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--shadow);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--dark);
+            transition: color 0.3s ease;
+        }
+        
+        .mobile-menu-btn:hover {
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: var(--gradient);
+            color: white;
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 Q50,20 100,0 L100,100 Q50,80 0,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            text-align: center;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+            opacity: 0;
+        }
+        
+        /* Services Content */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+        
+        .section-header p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        /* Service Cards */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .service-image {
+            height: 200px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .service-card:hover .service-image::before {
+            opacity: 1;
+        }
+        
+        .service-icon {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 20px;
+            box-shadow: var(--shadow);
+        }
+        
+        .service-content {
+            padding: 30px;
+        }
+        
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .service-content p {
+            color: var(--gray);
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+        
+        .service-features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        
+        .service-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 10px;
+            color: var(--gray);
+            font-size: 14px;
+        }
+        
+        .service-features li i {
+            color: var(--secondary);
+            margin-top: 4px;
+        }
+        
+        .service-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .service-cta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        /* Service Details Modal */
+        .service-detail {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-top: 40px;
+            box-shadow: var(--shadow-xl);
+            display: none;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+        }
+        
+        .service-detail.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .service-detail h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .service-detail h3 i {
+            background: var(--gradient);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+        
+        .detail-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .detail-text p {
+            margin-bottom: 15px;
+            color: var(--gray);
+        }
+        
+        .packages {
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .packages h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .package-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            transition: background 0.3s ease;
+        }
+        
+        .package-item:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+        
+        .package-item:last-child {
+            border-bottom: none;
+        }
+        
+        .package-name {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .package-price {
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        /* Process Section */
+        .process-section {
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+            padding: 80px 0;
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .process-step {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        
+        .process-step:hover {
+            transform: translateY(-5px);
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .step-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(139, 92, 246, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary);
+            font-size: 24px;
+        }
+        
+        .process-step h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .process-step p {
+            color: var(--gray);
+        }
+        
+        /* Testimonials */
+        .testimonials-section {
+            padding: 80px 0;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .testimonial-content {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-content p {
+            color: var(--gray);
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+        }
+        
+        .author-info h4 {
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Call to Action */
+        .cta-section {
+            background: var(--gradient);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 Q50,20 100,0 L100,100 Q50,80 0,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+        
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--primary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: #cbd5e1;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-link-footer {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        
+        .social-link-footer:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #94a3b8;
+            font-size: 14px;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .detail-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-image {
+                height: 150px;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .service-detail {
+                padding: 25px;
+            }
+            
+            .cta-section {
+                padding: 60px 0;
+            }
+            
+            .cta-content h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-glass-cheers"></i>
+                    </div>
+                    <div class="logo-text">Natie's Events</div>
+                </a>
+                
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="services.html" class="active">Services</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                
+                <a href="booking.html" class="cta-button">
+                    <i class="fas fa-calendar-check"></i>
+                    Book Now
+                </a>
+                
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Our Premium Services</h1>
+                <p>Comprehensive event planning solutions tailored to your unique needs and vision. From intimate gatherings to grand celebrations, we handle every detail with precision and care.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Comprehensive Event Solutions</h2>
+                <p>Explore our six specialized service categories designed to make your event planning experience seamless and stress-free.</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Wedding Planning -->
+                <div class="service-card" onclick="showServiceDetail('wedding')">
+                    <div class="service-image">
+                        WEDDING PLANNING
+                        <div class="service-icon">
+                            <i class="fas fa-ring"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3>Wedding Planning</h3>
+                        <p>Full-service wedding coordination from engagement to reception, ensuring your special day is perfect in every detail.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> Venue selection & coordination</li>
+                            <li><i class="fas fa-check-circle"></i> Vendor management</li>
+                            <li><i class="fas fa-check-circle"></i> Timeline creation</li>
+                            <li><i class="fas fa-check-circle"></i> Budget planning</li>
+                        </ul>
+                        <div class="service-price">From $1,200</div>
+                        <div class="service-cta">
+                            <a href="#" class="cta-button" style="padding: 8px 20px; font-size: 14px;">
+                                <i class="fas fa-info-circle"></i> View Details
+                            </a>
+                            <span class="service-tag">Most Popular</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Birthday Parties -->
+                <div class="service-card" onclick="showServiceDetail('birthday')">
+                    <div class="service-image">
+                        BIRTHDAY PARTIES
+                        <div class="service-icon">
+                            <i class="fas fa-birthday-cake"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3>Birthday Parties</h3>
+                        <p>Memorable birthday celebrations for all ages, from toddlers to golden anniversaries, with personalized themes and entertainment.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> Theme development</li>
+                            <li><i class="fas fa-check-circle"></i> Entertainment booking</li>
+                            <li><i class="fas fa-check-circle"></i> Cake & catering</li>
+                            <li><i class="fas fa-check-circle"></i> Party favors</li>
+                        </ul>
+                        <div class="service-price">From $350</div>
+                        <div class="service-cta">
+                            <a href="#" class="cta-button" style="padding: 8px 20px; font-size: 14px;">
+                                <i class="fas fa-info-circle"></i> View Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Corporate Events -->
+                <div class="service-card" onclick="showServiceDetail('corporate')">
+                    <div class="service-image">
+                        CORPORATE EVENTS
+                        <div class="service-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3>Corporate Events</h3>
+                        <p>Professional event planning for conferences, product launches, team building, and corporate celebrations with business-grade quality.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> Conference planning</li>
+                            <li><i class="fas fa-check-circle"></i> Brand integration</li>
+                            <li><i class="fas fa-check-circle"></i> AV equipment</li>
+                            <li><i class="fas fa-check-circle"></i> Catering services</li>
+                        </ul>
+                        <div class="service-price">From $2,500</div>
+                        <div class="service-cta">
+                            <a href="#" class="cta-button" style="padding: 8px 20px; font-size: 14px;">
+                                <i class="fas fa-info-circle"></i> View Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Catering Services -->
+                <div class="service-card" onclick="showServiceDetail('catering')">
+                    <div class="service-image">
+                        CATERING SERVICES
+                        <div class="service-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3>Catering Services</h3>
+                        <p>Gourmet catering with customizable menus featuring local Zimbabwean cuisine and international options, prepared by expert chefs.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> Custom menu creation</li>
+                            <li><i class="fas fa-check-circle"></i> Dietary accommodations</li>
+                            <li><i class="fas fa-check-circle"></i> Bar & beverage service</li>
+                            <li><i class="fas fa-check-circle"></i> Service staff</li>
+                        </ul>
+                        <div class="service-price">From $25 per person</div>
+                        <div class="service-cta">
+                            <a href="#" class="cta-button" style="padding: 8px 20px; font-size: 14px;">
+                                <i class="fas fa-info-circle"></i> View Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Event Decoration -->
+                <div class="service-card" onclick="showServiceDetail('decoration')">
+                    <div class="service-image">
+                        EVENT DECORATION
+                        <div class="service-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3>Event Decoration</h3>
+                        <p>Stunning visual transformations with custom decor, floral arrangements, lighting, and thematic elements that bring your vision to life.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> Custom design concepts</li>
+                            <li><i class="fas fa-check-circle"></i> Floral arrangements</li>
+                            <li><i class="fas fa-check-circle"></i> Lighting design</li>
+                            <li><i class="fas fa-check-circle"></i> Thematic props</li>
+                        </ul>
+                        <div class="service-price">From $500</div>
+                        <div class="service-cta">
+                            <a href="#" class="cta-button" style="padding: 8px 20px; font-size: 14px;">
+                                <i class="fas fa-info-circle"></i> View Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Photography & Videography -->
+                <div class="service-card" onclick="showServiceDetail('media')">
+                    <div class="service-image">
+                        PHOTOGRAPHY & VIDEO
+                        <div class="service-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3>Photography & Videography</h3>
+                        <p>Professional documentation of your special moments with high-quality photography and cinematic videography services.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> Event photography</li>
+                            <li><i class="fas fa-check-circle"></i> Cinematic videography</li>
+                            <li><i class="fas fa-check-circle"></i> Drone footage</li>
+                            <li><i class="fas fa-check-circle"></i> Photo editing</li>
+                        </ul>
+                        <div class="service-price">From $400</div>
+                        <div class="service-cta">
+                            <a href="#" class="cta-button" style="padding: 8px 20px; font-size: 14px;">
+                                <i class="fas fa-info-circle"></i> View Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Simple Process</h2>
+                <p>We've streamlined our approach to make event planning as easy and stress-free as possible for you.</p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Consultation</h3>
+                    <p>We discuss your vision, requirements, and budget to understand your needs.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Planning</h3>
+                    <p>We create a detailed plan and timeline tailored to your specific event.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Execution</h3>
+                    <p>Our team handles all the details, from setup to coordination on the day.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Enjoyment</h3>
+                    <p>You relax and enjoy your event while we ensure everything runs smoothly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Details -->
+    <section class="section">
+        <div class="container">
+            <!-- Wedding Detail -->
+            <div id="wedding-detail" class="service-detail">
+                <h3><i class="fas fa-ring"></i> Wedding Planning</h3>
+                <div class="detail-content">
+                    <div class="detail-text">
+                        <p>Our wedding planning service is designed to transform your dream wedding into reality. We understand that your wedding day is one of the most important days of your life, and we're committed to making it absolutely perfect.</p>
+                        <p>From the initial consultation to the final moments of your reception, our experienced wedding planners handle every detail with meticulous care and attention. We work closely with you to understand your vision, preferences, and budget, then coordinate with our network of trusted vendors to bring everything together seamlessly.</p>
+                        <p>Our comprehensive service includes venue selection, vendor coordination, timeline creation, budget management, day-of coordination, and emergency planning. We also offer specialized services for destination weddings, cultural ceremonies, and intimate elopements.</p>
+                    </div>
+                    <div class="packages">
+                        <h4>Wedding Packages</h4>
+                        <div class="package-item">
+                            <span class="package-name">Essential Package</span>
+                            <span class="package-price">$1,200</span>
+                        </div>
+                        <div class="package-item">
+                            <span class="package-name">Premium Package</span>
+                            <span class="package-price">$2,800</span>
+                        </div>
+                        <div class="package-item">
+                            <span class="package-name">Luxury Package</span>
+                            <span class="package-price">$5,500</span>
+                        </div>
+                        <div class="package-item">
+                            <span class="package-name">Destination Wedding</span>
+                            <span class="package-price">From $8,000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Birthday Detail -->
+            <div id="birthday-detail" class="service-detail">
+                <h3><i class="fas fa-birthday-cake"></i> Birthday Parties</h3>
+                <div class="detail-content">
+                    <div class="detail-text">
+                        <p>Whether you're celebrating your child's first birthday, a sweet sixteen, a milestone adult birthday, or a golden anniversary, our birthday party planning service ensures an unforgettable celebration that reflects the personality and interests of the guest of honor.</p>
+                        <p>We specialize in creating themed parties that captivate guests of all ages. From princess castles and superhero adventures to elegant soirées and retro throwbacks, our creative team develops custom concepts that bring your vision to life.</p>
+                        <p>Our service includes theme development, venue selection, entertainment booking, cake and catering coordination, party favor curation, and complete day-of coordination. We handle everything from setup to cleanup, allowing you to fully enjoy the celebration.</p>
+                    </div>
+                    <div class="packages">
+                        <h4>Birthday Packages</h4>
+                        <div class="package-item">
+                            <span class="package-name">Mini Celebration</span>
+                            <span class="package-price">$350</span>
+                        </div>
+                        <div class="package-item">
+                            <span class="package-name">Standard Party</span>
+                            <span class="package-price">$650</span>
+                        </div>
+                        <div class="package-item">
+                            <span class="package-name">Premium Experience</span>
+                            <span class="package-price">$1,200</span>
+                        </div>
+                        <div class="package-item">
+                            <span class="package-name">Custom Celebration</span>
+                            <span class="package-price">From $2,000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Corporate Detail -->
+            <div id="corporate-detail" class="service-detail">
+                <h3><i class="fas fa-briefcase"></i> Corporate Events</h3>
+                <div class="detail-content">
+                    <div class="detail-text">
+                        <p>Our corporate event planning service delivers professional, polished, and impactful events that align with your brand values and business objectives. We understand the unique requirements of corporate functions and provide business-grade quality and reliability.</p>
+                        <p>From intimate executive meetings to large-scale conferences and product launches, we handle all aspects of your corporate event with precision and professionalism. Our services include venue sourcing, brand integration, AV equipment coordination, catering management, guest registration, and comprehensive event logistics.</p>
+                        <p>We also specialize in team-building activities, corporate retreats, holiday parties, and award ceremonies. Our experienced corporate event planners work within your budget constraints while delivering exceptional experiences that impress your guests and achieve your business goals.</p>
+                    </div>
+                    <div class="packages">
+                        <h4>Corporate Packages</h4>
+                        <div class="package-item">
+                            <span class="package-name">Meeting & Conference</span>
+                            <span class="package-price">From $2,500</span>
+                        </div>
+                        <div class="package-item">
+                            <span class="package-name">Product Launch</span>
+                            <span class="package-price">From $5,000</span>
+                        </div>
+                        <div class="package-item">
+                            <span class="package-name">Team Building</span>
+                            <span class="package-price">From $1,800</span>
+                        </div>
+                        <div class="package-item">
+                            <span class="package-name">Annual Gala</span>
+                            <span class="package-price">From $8,000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Catering Detail -->
+            <div id="catering-detail" class="service-detail">
+                <h3><i class="fas fa-utensils"></i> Catering Services</h3>
+                <div class="detail-content">
+                    <div class="detail-text">
+                        <p>Our gourmet catering service combines the rich flavors of Zimbabwean cuisine with international culinary excellence. Led by our executive chef with over 15 years of experience, our catering team creates memorable dining experiences for events of all sizes.</p>
+                        <p>We offer fully customizable menus that can accommodate any dietary requirements, including vegetarian, vegan, gluten-free, and halal options. Our service includes menu consultation, food preparation, professional service staff, bar and beverage service, and complete cleanup.</p>
+                        <p>From elegant plated dinners and interactive food stations to casual buffets and cocktail receptions, we tailor our catering approach to match your event style and guest preferences. We source fresh, local ingredients whenever possible and can create signature cocktails and custom cake designs to complement your menu.</p>
+                    </div>
+                    <div class="packages">
+                        <h4>Catering Options</h4>
+                        <div class="package-item">
+                            <span class="package-name">Cocktail Reception</span>
+                            <span class="package-price">$25/person</span>
+                        </div>
+                        <div class="package-item">
+                            <span class="package-name">Buffet Service</span>
+                            <span class="package-price">$35/person</span>
+                        </div>
+                        <div class="package-item">
+                            <span class="package-name">Plated Dinner</span>
+                            <span class="package-price">$45/person</span>
+                        </div>
+                        <div class="package-item">
+                            <span class="package-name">Custom Menu</span>
+                            <span class="package-price">From $60/person</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Decoration Detail -->
+            <div id="decoration-detail" class="service-detail">
+                <h3><i class="fas fa-palette"></i> Event Decoration</h3>
+                <div class="detail-content">
+                    <div class="detail-text">
+                        <p>Our event decoration service transforms any venue into a stunning visual masterpiece that reflects your unique style and theme. Our creative director and design team work closely with you to develop custom concepts that bring your vision to life.</p>
+                        <p>We specialize in comprehensive decor solutions including custom backdrops, floral arrangements, lighting design, table settings, chair covers, drapery, signage, and thematic props. Our inventory includes thousands of decor items, and we can source or create custom pieces for unique requirements.</p>
+                        <p>Our team handles complete setup and teardown, ensuring your venue looks perfect for your event and is returned to its original condition afterward. We work with venues of all types and sizes, from intimate homes to grand ballrooms and outdoor locations.</p>
+                    </div>
+                    <div class="packages">
+                        <h4>Decoration Packages</h4>
+                        <div class="package-item">
+                            <span class="package-name">Basic Decor</span>
+                            <span class="package-price">$500</span>
+                        </div>
+                        <div class="package-item">
+                            <span class="package-name">Standard Package</span>
+                            <span class="package-price">$1,200</span>
+                        </div>
+                        <div class="package-item">
+                            <span class="package-name">Premium Experience</span>
+                            <span class="package-price">$2,500</span>
+                        </div>
+                        <div class="package-item">
+                            <span class="package-name">Custom Design</span>
+                            <span class="package-price">From $4,000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Media Detail -->
+            <div id="media-detail" class="service-detail">
+                <h3><i class="fas fa-camera"></i> Photography & Videography</h3>
+                <div class="detail-content">
+                    <div class="detail-text">
+                        <p>Our professional photography and videography service captures the essence and emotion of your special moments with artistic vision and technical excellence. Our team of experienced photographers and videographers document your event with a cinematic approach that tells your unique story.</p>
+                        <p>We offer comprehensive coverage including pre-event preparation, ceremony documentation, reception highlights, and candid moments throughout your celebration. Our services include high-resolution digital photos, edited highlight videos, drone aerial footage, and professional photo albums.</p>
+                        <p>All our packages include digital delivery of edited photos and videos within 2-3 weeks, with options for printed albums, framed prints, and additional editing services. We use professional-grade equipment and backup systems to ensure nothing is missed, and our team blends seamlessly into your event while capturing every important moment.</p>
+                    </div>
+                    <div class="packages">
+                        <h4>Media Packages</h4>
+                        <div class="package-item">
+                            <span class="package-name">Photo Only</span>
+                            <span class="package-price">$400</span>
+                        </div>
+                        <div class="package-item">
+                            <span class="package-name">Video Only</span>
+                            <span class="package-price">$600</span>
+                        </div>
+                        <div class="package-item">
+                            <span class="package-name">Photo + Video</span>
+                            <span class="package-price">$900</span>
+                        </div>
+                        <div class="package-item">
+                            <span class="package-name">Premium Package</span>
+                            <span class="package-price">$1,500</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Clients Say</h2>
+                <p>Don't just take our word for it - hear from some of our satisfied clients.</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Natie's Events transformed our wedding day into a magical experience. Their attention to detail and professionalism was outstanding. We couldn't have asked for a more perfect day!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">TS</div>
+                        <div class="author-info">
+                            <h4>Tendai & Sarah</h4>
+                            <p>Wedding Clients</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"The corporate conference we hosted with Natie's Events was flawless. They handled everything from venue setup to catering, allowing our team to focus on the content. Highly recommended!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JM</div>
+                        <div class="author-info">
+                            <h4>James Moyo</h4>
+                            <p>Corporate Client</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Our daughter's 5th birthday party was an absolute dream come true. The team at Natie's Events created a magical princess theme that had all the children mesmerized. Worth every penny!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">PN</div>
+                        <div class="author-info">
+                            <h4>Patience Ndlovu</h4>
+                            <p>Birthday Party Client</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Plan Your Event?</h2>
+                <p>Contact us today to discuss your event needs and receive a personalized quote. Our team is ready to make your vision a reality.</p>
+                <a href="booking.html" class="cta-button">
+                    <i class="fas fa-calendar-check"></i> Book Your Consultation
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Natie's Events</h3>
+                    <p>Your trusted partner for exceptional event planning services across Zimbabwe. We create unforgettable experiences that exceed expectations.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link-footer"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link-footer"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link-footer"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-link-footer"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="booking.html">Book Now</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#wedding-detail">Wedding Planning</a></li>
+                        <li><a href="#birthday-detail">Birthday Parties</a></li>
+                        <li><a href="#corporate-detail">Corporate Events</a></li>
+                        <li><a href="#catering-detail">Catering Services</a></li>
+                        <li><a href="#decoration-detail">Event Decoration</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Enterprise Road, Harare, Zimbabwe</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+263 78 560 0746</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@natiesevents.co.zw</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Mon-Fri: 9AM-6PM, Sat: 10AM-4PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Natie's Events. All rights reserved. | Designed and Developed in Zimbabwe</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showServiceDetail(serviceId) {
+            // Hide all service details
+            const allDetails = document.querySelectorAll('.service-detail');
+            allDetails.forEach(detail => {
+                detail.classList.remove('active');
+            });
+            
+            // Show the selected service detail
+            const selectedDetail = document.getElementById(serviceId + '-detail');
+            if (selectedDetail) {
+                selectedDetail.classList.add('active');
+                
+                // Scroll to the detail section
+                selectedDetail.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu functionality
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            });
+            
+            // Close service details when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.service-card') && !e.target.closest('.service-detail')) {
+                    const activeDetails = document.querySelectorAll('.service-detail.active');
+                    activeDetails.forEach(detail => {
+                        detail.classList.remove('active');
+                    });
+                }
+            });
+            
+            // Add staggered animation to service cards
+            const serviceCards = document.querySelectorAll('.service-card');
+            serviceCards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+            });
+            
+            // Add scroll animation to elements
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = `fadeInUp 0.6s ease forwards`;
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe elements for animation
+            document.querySelectorAll('.process-step, .testimonial-card').forEach(el => {
+                el.style.opacity = '0';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>

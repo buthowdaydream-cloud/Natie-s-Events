@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Natie's Events</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary: #8B5CF6;
+            --primary-dark: #7C3AED;
+            --primary-light: #A78BFA;
+            --secondary: #10B981;
+            --secondary-dark: #0D9668;
+            --accent: #F59E0B;
+            --dark: #1F2937;
+            --dark-light: #374151;
+            --light: #F9FAFB;
+            --gray: #6B7280;
+            --light-gray: #F3F4F6;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --gradient-light: linear-gradient(135deg, var(--primary-light), var(--secondary));
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            background: var(--gradient);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover .logo-icon {
+            transform: rotate(15deg);
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        .cta-button {
+            background: var(--gradient);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--shadow);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--dark);
+            transition: color 0.3s ease;
+        }
+        
+        .mobile-menu-btn:hover {
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: var(--gradient);
+            color: white;
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 Q50,20 100,0 L100,100 Q50,80 0,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            text-align: center;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+            opacity: 0;
+        }
+        
+        /* Gallery Content */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+        
+        .section-header p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        /* Filter Buttons */
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        
+        .filter-btn {
+            padding: 12px 25px;
+            border: 2px solid var(--light-gray);
+            background: white;
+            color: var(--dark);
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+        
+        .filter-btn:hover {
+            color: white;
+            border-color: transparent;
+        }
+        
+        .filter-btn:hover::before {
+            left: 0;
+        }
+        
+        .filter-btn.active {
+            background: var(--gradient);
+            color: white;
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+        
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .gallery-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            padding: 25px 20px;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+        
+        .gallery-overlay h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+        
+        .gallery-overlay p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+        
+        .gallery-category {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: var(--shadow);
+        }
+        
+        .gallery-zoom {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark);
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-zoom {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+        
+        .lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 70vh;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            transform: scale(0.9);
+            transition: transform 0.4s ease;
+        }
+        
+        .lightbox.active .lightbox-image {
+            transform: scale(1);
+        }
+        
+        .lightbox-info {
+            color: white;
+            text-align: center;
+            margin-top: 25px;
+            max-width: 600px;
+        }
+        
+        .lightbox-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .lightbox-info p {
+            opacity: 0.8;
+            font-size: 1.1rem;
+        }
+        
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            transform: translateY(-50%);
+        }
+        
+        .lightbox-btn {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .lightbox-btn:hover {
+            background: var(--primary);
+            transform: scale(1.1);
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .lightbox-close:hover {
+            transform: rotate(90deg);
+        }
+        
+        .lightbox-counter {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+            padding: 80px 0;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        
+        .stat-item {
+            background: white;
+            padding: 40px 20px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .stat-item p {
+            color: var(--gray);
+            font-weight: 600;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--primary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: #cbd5e1;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-link-footer {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        
+        .social-link-footer:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #94a3b8;
+            font-size: 14px;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Loading Animation */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--light-gray);
+            border-top: 5px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .lightbox-nav {
+                padding: 0 10px;
+            }
+            
+            .lightbox-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+            
+            .lightbox-close {
+                top: 20px;
+                right: 20px;
+            }
+            
+            .lightbox-counter {
+                top: 20px;
+                left: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .filter-buttons {
+                gap: 10px;
+            }
+            
+            .filter-btn {
+                padding: 10px 18px;
+                font-size: 14px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .lightbox-info h3 {
+                font-size: 1.4rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-glass-cheers"></i>
+                    </div>
+                    <div class="logo-text">Natie's Events</div>
+                </a>
+                
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="services.html">Services</a>
+                    <a href="gallery.html" class="active">Gallery</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                
+                <a href="booking.html" class="cta-button">
+                    <i class="fas fa-calendar-check"></i>
+                    Book Now
+                </a>
+                
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Our Event Gallery</h1>
+                <p>Browse through our portfolio of successful events, showcasing weddings, birthdays, corporate functions, and more across Zimbabwe.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>500+</h3>
+                    <p>Events Planned</p>
+                </div>
+                <div class="stat-item">
+                    <h3>98%</h3>
+                    <p>Client Satisfaction</p>
+                </div>
+                <div class="stat-item">
+                    <h3>7+</h3>
+                    <p>Team Members</p>
+                </div>
+                <div class="stat-item">
+                    <h3>5+</h3>
+                    <p>Years Experience</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Content -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Event Portfolio</h2>
+                <p>Explore 20+ professionally captured moments from our diverse range of events throughout Zimbabwe.</p>
+            </div>
+            
+            <!-- Filter Buttons -->
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Events</button>
+                <button class="filter-btn" data-filter="wedding">Weddings</button>
+                <button class="filter-btn" data-filter="birthday">Birthday Parties</button>
+                <button class="filter-btn" data-filter="corporate">Corporate Events</button>
+                <button class="filter-btn" data-filter="anniversary">Anniversaries</button>
+                <button class="filter-btn" data-filter="baby">Baby Showers</button>
+            </div>
+            
+            <!-- Gallery Grid -->
+            <div class="gallery-grid" id="galleryContainer">
+                <!-- Gallery items will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-counter" id="lightboxCounter"></div>
+        <button class="lightbox-close" id="lightboxClose">&times;</button>
+        <div class="lightbox-content">
+            <img src="" alt="" class="lightbox-image" id="lightboxImage">
+            <div class="lightbox-info">
+                <h3 id="lightboxTitle"></h3>
+                <p id="lightboxDescription"></p>
+            </div>
+        </div>
+        <div class="lightbox-nav">
+            <button class="lightbox-btn" id="lightboxPrev">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="lightbox-btn" id="lightboxNext">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Natie's Events</h3>
+                    <p>Your trusted partner for exceptional event planning services across Zimbabwe. We create unforgettable experiences that exceed expectations.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link-footer"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link-footer"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link-footer"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-link-footer"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="booking.html">Book Now</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="services.html#weddings">Wedding Planning</a></li>
+                        <li><a href="services.html#birthdays">Birthday Parties</a></li>
+                        <li><a href="services.html#corporate">Corporate Events</a></li>
+                        <li><a href="services.html#catering">Catering Services</a></li>
+                        <li><a href="services.html#decoration">Event Decoration</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Enterprise Road, Harare, Zimbabwe</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+263 78 560 0746</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@natiesevents.co.zw</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Mon-Fri: 9AM-6PM, Sat: 10AM-4PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Natie's Events. All rights reserved. | Designed and Developed in Zimbabwe</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Gallery data with real Unsplash images (professional event photos)
+        const galleryData = [
+            {
+                id: 1,
+                title: "Elegant Wedding Ceremony",
+                description: "Traditional wedding ceremony at Grace Cathedral, Harare",
+                category: "wedding",
+                image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&h=400&fit=crop"
+            },
+            {
+                id: 2,
+                title: "Corporate Gala Dinner",
+                description: "Annual corporate gala with 200+ attendees at Meikles Hotel",
+                category: "corporate",
+                image: "https://images.unsplash.com/photo-1493612276216-ee3925520721?w=600&h=400&fit=crop"
+            },
+            {
+                id: 3,
+                title: "Children's Birthday Party",
+                description: "Superhero themed birthday party with entertainment and games",
+                category: "birthday",
+                image: "https://images.unsplash.com/photo-1519152850228-669c1a959acb?w=600&h=400&fit=crop"
+            },
+            {
+                id: 4,
+                title: "Anniversary Celebration",
+                description: "25th wedding anniversary dinner under the stars",
+                category: "anniversary",
+                image: "https://images.unsplash.com/photo-1523554172298-555f4e4e35d8?w=600&h=400&fit=crop"
+            },
+            {
+                id: 5,
+                title: "Engagement Party",
+                description: "Intimate engagement celebration with family and friends",
+                category: "wedding",
+                image: "https://images.unsplash.com/photo-1511288091669-3354131a9b93?w=600&h=400&fit=crop"
+            },
+            {
+                id: 6,
+                title: "Baby Shower",
+                description: "Charming baby shower with pastel decorations and themes",
+                category: "baby",
+                image: "https://images.unsplash.com/photo-1578412358439-5cc41e4e2c81?w=600&h=400&fit=crop"
+            },
+            {
+                id: 7,
+                title: "Wedding Reception",
+                description: "Grand wedding reception with elegant decor and catering",
+                category: "wedding",
+                image: "https://images.unsplash.com/photo-1519741497679-cc5e8d0cdf58?w=600&h=400&fit=crop"
+            },
+            {
+                id: 8,
+                title: "Product Launch Event",
+                description: "High-tech product launch with interactive displays",
+                category: "corporate",
+                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop"
+            },
+            {
+                id: 9,
+                title: "Sweet Sixteen Party",
+                description: "Dazzling sweet sixteen celebration with custom themes",
+                category: "birthday",
+                image: "https://images.unsplash.com/photo-1511632765499-6de618de753c?w=600&h=400&fit=crop"
+            },
+            {
+                id: 10,
+                title: "Corporate Conference",
+                description: "Professional conference setup with advanced AV equipment",
+                category: "corporate",
+                image: "https://images.unsplash.com/photo-1461028315584-e7b76a5a4e79?w=600&h=400&fit=crop"
+            },
+            {
+                id: 11,
+                title: "Golden Anniversary",
+                description: "50th wedding anniversary celebration with family",
+                category: "anniversary",
+                image: "https://images.unsplash.com/photo-1518609231250-5a8b9e5f2e2f?w=600&h=400&fit=crop"
+            },
+            {
+                id: 12,
+                title: "Princess Theme Party",
+                description: "Magical princess themed birthday party for young girls",
+                category: "birthday",
+                image: "https://images.unsplash.com/photo-1517270659021-9e14c4d86f6c?w=600&h=400&fit=crop"
+            },
+            {
+                id: 13,
+                title: "Wedding Bridal Party",
+                description: "Beautiful bridal party portraits in Harare gardens",
+                category: "wedding",
+                image: "https://images.unsplash.com/photo-1522252234503-e356532cafd4?w=600&h=400&fit=crop"
+            },
+            {
+                id: 14,
+                title: "Team Building Event",
+                description: "Outdoor corporate team building activities",
+                category: "corporate",
+                image: "https://images.unsplash.com/photo-1552664105-86814f3e5a5e?w=600&h=400&fit=crop"
+            },
+            {
+                id: 15,
+                title: "Milestone Birthday",
+                description: "40th birthday celebration with friends and family",
+                category: "birthday",
+                image: "https://images.unsplash.com/photo-1501857360331-b8e5021f7f24?w=600&h=400&fit=crop"
+            },
+            {
+                id: 16,
+                title: "Wedding Cake Cutting",
+                description: "Special moment of cake cutting ceremony",
+                category: "wedding",
+                image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&h=400&fit=crop&crop=bottom"
+            },
+            {
+                id: 17,
+                title: "Baby Gender Reveal",
+                description: "Exciting gender reveal party with family celebration",
+                category: "baby",
+                image: "https://images.unsplash.com/photo-1583394838356-00f8b32a3082?w=600&h=400&fit=crop"
+            },
+            {
+                id: 18,
+                title: "Corporate Holiday Party",
+                description: "Festive corporate Christmas party with entertainment",
+                category: "corporate",
+                image: "https://images.unsplash.com/photo-1506157786151-b8491531f063?w=600&h=400&fit=crop"
+            },
+            {
+                id: 19,
+                title: "First Birthday Celebration",
+                description: "Adorable first birthday smash cake party",
+                category: "birthday",
+                image: "https://images.unsplash.com/photo-1583394838356-00f8b32a3082?w=600&h=400&fit=crop&crop=top"
+            },
+            {
+                id: 20,
+                title: "Wedding First Dance",
+                description: "Romantic first dance under fairy lights",
+                category: "wedding",
+                image: "https://images.unsplash.com/photo-1519741497679-cc5e8d0cdf58?w=600&h=400&fit=crop&crop=bottom"
+            }
+        ];
+
+        // Global variables
+        let currentFilter = 'all';
+        let currentLightboxIndex = 0;
+        let filteredItems = [];
+
+        // Function to render gallery
+        function renderGallery(items) {
+            const container = document.getElementById('galleryContainer');
+            container.innerHTML = '';
+            
+            // Add staggered animation delay
+            items.forEach((item, index) => {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = `gallery-item ${item.category}`;
+                galleryItem.dataset.category = item.category;
+                galleryItem.style.animationDelay = `${index * 0.1}s`;
+                
+                galleryItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.title}" class="gallery-image">
+                    <div class="gallery-category">${item.category.charAt(0).toUpperCase() + item.category.slice(1)}</div>
+                    <div class="gallery-zoom">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h3>${item.title}</h3>
+                        <p>${item.description}</p>
+                    </div>
+                `;
+                
+                galleryItem.addEventListener('click', () => openLightbox(items, index));
+                container.appendChild(galleryItem);
+            });
+        }
+
+        // Filter gallery
+        function filterGallery(category) {
+            currentFilter = category;
+            filteredItems = category === 'all' 
+                ? galleryData 
+                : galleryData.filter(item => item.category === category);
+            renderGallery(filteredItems);
+            
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-filter="${category}"]`).classList.add('active');
+        }
+
+        // Lightbox functions
+        function openLightbox(items, index) {
+            currentLightboxIndex = index;
+            filteredItems = items;
+            
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightboxImage');
+            const lightboxTitle = document.getElementById('lightboxTitle');
+            const lightboxDescription = document.getElementById('lightboxDescription');
+            const lightboxCounter = document.getElementById('lightboxCounter');
+            
+            lightboxImage.src = items[index].image;
+            lightboxTitle.textContent = items[index].title;
+            lightboxDescription.textContent = items[index].description;
+            lightboxCounter.textContent = `${index + 1} / ${items.length}`;
+            
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function navigateLightbox(direction) {
+            if (direction === 'next') {
+                currentLightboxIndex = (currentLightboxIndex + 1) % filteredItems.length;
+            } else {
+                currentLightboxIndex = (currentLightboxIndex - 1 + filteredItems.length) % filteredItems.length;
+            }
+            
+            openLightbox(filteredItems, currentLightboxIndex);
+        }
+
+        // Initialize gallery
+        document.addEventListener('DOMContentLoaded', function() {
+            // Render all gallery items initially
+            filterGallery('all');
+            
+            // Add event listeners to filter buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const category = e.target.dataset.filter;
+                    filterGallery(category);
+                });
+            });
+            
+            // Lightbox functionality
+            document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+            document.getElementById('lightboxPrev').addEventListener('click', () => navigateLightbox('prev'));
+            document.getElementById('lightboxNext').addEventListener('click', () => navigateLightbox('next'));
+            
+            document.getElementById('lightbox').addEventListener('click', (e) => {
+                if (e.target.id === 'lightbox') {
+                    closeLightbox();
+                }
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                const lightbox = document.getElementById('lightbox');
+                if (!lightbox.classList.contains('active')) return;
+                
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') navigateLightbox('prev');
+                if (e.key === 'ArrowRight') navigateLightbox('next');
+            });
+            
+            // Mobile menu functionality
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            });
+        });
+    </script>
+</body>
+</html>
